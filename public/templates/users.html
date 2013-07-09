@@ -1,0 +1,6 @@
+<h3>Lista użytkowników</h3>
+<ul>
+	<% _.each(users, function(user) { %>
+	<li>Login: <%= user.get('f_login') %>, Hasło: <%= user.get('f_pass') %>, ID: <%= user.get('_id') %></li>
+	<% }); %>
+</ul>

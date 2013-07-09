@@ -14,17 +14,22 @@ var userSchema = mongoose.Schema({
 var User = mongoose.model('User', userSchema);
 
 
-
-
-User.find(function(err, users) {
+exports.addUser = function(req, res) {
+	var newUser = new User({f_login : req.body.f_login, f_pass : req.body.f_pass});
+	newUser.save(function(err) {
+		if (err) {
+			
+		} else {
+			res.send('oki');
+		}
+	});
+	
+	User.find(function(err, users) {
 		console.log(users);
 	});
-
-exports.addUser = function(req, res) {
-	console.log(JSON.stringify(req.body));
-	//var newUser = new User({f_login:'a', f_pass:'b'});
-	//newUser.save();
-	/*User.find(function(err, users) {
-		console.log(users);
-	});*/
+};
+exports.showUsers =  function(req, res) {
+	User.find(function(err, users) {
+		res.send(users);
+	});
 };

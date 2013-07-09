@@ -3,12 +3,14 @@ define([
 	'underscore',
 	'backbone',
 	'views/login',
-	'views/register'
-], function($, _, Backbone, LoginPageView, RegisterPageView) {
+	'views/register',
+	'views/users'
+], function($, _, Backbone, LoginPageView, RegisterPageView, UsersPageView) {
 	var AppRouter = Backbone.Router.extend({
 		routes: {
 			'login' : 'showLoginPage',
-			'register' : 'showRegisterPage'
+			'register' : 'showRegisterPage',
+			'users' : 'showUsersPage'
 		}
 	});
 	var initialize = function() {
@@ -20,6 +22,10 @@ define([
 		appRouter.on('route:showRegisterPage', function() {
 			var registerPageView = new RegisterPageView();
 			registerPageView.render();
+		});
+		appRouter.on('route:showUsersPage', function() {
+			var usersPageView = new UsersPageView();
+			usersPageView.render();
 		});
 		Backbone.history.start();
 	}
