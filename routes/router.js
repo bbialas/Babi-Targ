@@ -33,3 +33,12 @@ exports.showUsers =  function(req, res) {
 		res.send(users);
 	});
 };
+exports.loginUser =  function(req, res) {
+	User.findOne({'f_login' : req.query.f_login, 'f_pass' : req.query.f_pass}, 'f_login', function(err, user) {
+		if(err) {
+			return handleError(err);
+		}
+		console.log(user.f_login);
+	});
+	res.send('dane dotarly - logowanie');
+};

@@ -12,6 +12,7 @@ app.configure(function() {
 
 app.post('/register', router.addUser);
 app.get('/users', router.showUsers);
+app.get('/login', router.loginUser);
 
 app.listen(app.get('port'), function() {
 	console.log('Application listen at http://localhost:3000/');
