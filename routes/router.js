@@ -33,12 +33,22 @@ exports.showUsers =  function(req, res) {
 		res.send(users);
 	});
 };
+
+/**
+ * User authorization
+ * 
+ * @param {Object} req
+ * @param {Object} res
+ */
 exports.loginUser =  function(req, res) {
-	User.findOne({'f_login' : req.query.f_login, 'f_pass' : req.query.f_pass}, 'f_login', function(err, user) {
-		if(err) {
+	var userName = req.query.f_login;
+	var userPass = req.query.f_pass;
+	
+	User.findOne({'f_login' : userName, 'f_pass' : userPass}, 'f_login', function(err, user) {
+		if (err) {
 			return handleError(err);
 		}
+		res.send('dane dotarly - logowanie');
 		console.log(user.f_login);
 	});
-	res.send('dane dotarly - logowanie');
 };
