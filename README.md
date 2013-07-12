@@ -9,3 +9,7 @@ Technologies:
 * Backbone.js + Underscore.js
 * MongoDB + Mongoose
 * Grunt.js + jshint
+* LocalStorage
+* HTML5
+* CSS3
+* LESS
