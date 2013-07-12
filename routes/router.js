@@ -60,9 +60,14 @@ exports.loginUser =  function(req, res) {
         function(err, user) {
             if (err) {
                 console.log('blad'); //TODO: Trzeba obsluzyc blad
+            } else {
+                if (user !== null) {
+                    res.send('{"userId":"'+user.id+'", "userLogin":"'+
+                    user.login+'"}');
+                } else {
+                    res.send('0');
+                }
             }
-            res.send('dane dotarly - logowanie');
-            console.log(user.login);
         }
     );
 };

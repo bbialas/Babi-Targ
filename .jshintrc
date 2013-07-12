@@ -15,6 +15,7 @@
     "jquery" : true,
     "devel" : true,
     "globals" : {
-        "define" : false
+        "define" : false,
+        "localStorage" : false
     }
 }
