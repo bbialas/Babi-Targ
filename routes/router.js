@@ -1,4 +1,5 @@
-var mongoose = require('mongoose');
+var mongoose = require('mongoose'),
+    crypto = require('crypto');
 mongoose.connect('mongodb://localhost:27017/test');
 
 var db = mongoose.connection;
@@ -30,8 +31,13 @@ exports.showUsers =  function(req, res) {
  */
 exports.addUser = function(req, res) {
     'use strict';
-    var newUser = new User(
-        {login : req.query.login, password : req.query.password}
+    var md5Sum = crypto.createHash('md5'),
+        userLogin = req.query.login,
+        userPassword = md5Sum.update(req.query.password).digest('hex'),
+        newUser;
+        
+    newUser = new User(
+        {login: userLogin, password: userPassword}
     );
     newUser.save(function(err) {
         if (err) {
