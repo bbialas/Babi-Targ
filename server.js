@@ -13,7 +13,7 @@ app.configure(function() {
     app.use(express.static(path.join(__dirname, 'public')));
 });
 
-app.post('/register', router.addUser);
+app.get('/register', router.addUser);
 app.get('/users', router.showUsers);
 app.get('/login', router.loginUser);
 

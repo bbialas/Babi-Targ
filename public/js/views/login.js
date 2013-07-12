@@ -6,15 +6,15 @@ define([
 ], function($, _, Backbone, loginPageTemplate) {
     'use strict';
     var LoginPageView = Backbone.View.extend({
-        el : $('#container'),
+        el: $('#container'),
         events: {
             'submit .login-form' : 'onFormSubmit'
         },
-        render : function() {
+        render: function() {
             var template = _.template(loginPageTemplate);
             this.$el.html(template);
         },
-        onFormSubmit : function(e) {
+        onFormSubmit: function(e) {
             e.preventDefault();
             $.ajax({
                 url: 'http://localhost:3000/login',

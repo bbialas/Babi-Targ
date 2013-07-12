@@ -15,26 +15,31 @@ var userSchema = mongoose.Schema({
 var User = mongoose.model('User', userSchema);
 
 
-
-exports.addUser = function(req, res) {
-    'use strict';
-    var newUser = new User({login : req.body.login, pass : req.body.pass});
-    newUser.save(function(err) {
-        if (err) {
-            console.log('blad'); //TODO: Trzeba obsluzyc blad
-        } else {
-            res.send('oki');
-        }
-    });
-
-    User.find(function(err, users) {
-        console.log(users);
-    });
-};
 exports.showUsers =  function(req, res) {
     'use strict';
     User.find(function(err, users) {
         res.send(users);
+    });
+};
+
+/**
+ * User registration
+ * 
+ * @param {Object} req
+ * @param {Object} res
+ */
+exports.addUser = function(req, res) {
+    'use strict';
+    var newUser = new User(
+        {login : req.query.login, password : req.query.password}
+    );
+    newUser.save(function(err) {
+        if (err) {
+            console.log('Kod bledu: ' + err); //TODO: Trzeba obsluzyc blad
+            res.send('0');
+        } else {
+            res.send('1');
+        }
     });
 };
 
