@@ -1,6 +1,6 @@
 var mongoose = require('mongoose'),
     crypto = require('crypto');
-mongoose.connect('mongodb://localhost:27017/test');
+mongoose.connect('mongodb://localhost:27017/babi_targ');
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
