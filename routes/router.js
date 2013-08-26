@@ -57,6 +57,7 @@ exports.addUser = function(req, res) {
  */
 exports.loginUser =  function(req, res) {
     'use strict';
+    console.log('LOGIN USER');
     var userName = req.query.login;
     var userPass = req.query.password;
 
